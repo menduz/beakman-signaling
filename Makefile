@@ -10,6 +10,6 @@ watch:
 	./node_modules/.bin/tsc -p tsconfig.json --watch
 
 start: build
-	node ./src/index.js
+	node ./src/server.js
 
 .PHONY: build

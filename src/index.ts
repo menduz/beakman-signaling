@@ -1,7 +1,7 @@
 import WebSocket = require("ws");
 import * as proto from "beakman/proto/broker_pb";
 
-const DEFAULT_PROTOCOL = Math.random().toString(36)
+const DEFAULT_PROTOCOL = Math.random().toString(36);
 
 export type Host = {
   protocol: string;
@@ -149,12 +149,18 @@ export function initializeOnWebSocketServer(wss: WebSocket.Server, log: (...mess
         ws.send(responseMessage.serializeBinary());
         log(alias, `> Success!`);
       } else if (message.hasServerListRequest()) {
+        const request = message.getServerListRequest()!;
+
+        const protocol = request.getProtocol() || DEFAULT_PROTOCOL;
+
         const responseMessage = new proto.BrokerMessage();
         const serverList = new proto.ServerList();
         responseMessage.setServerListResponse(serverList);
 
         hosts.forEach(host => {
-          serverList.addServers(host.data);
+          if (host.protocol === protocol) {
+            serverList.addServers(host.data);
+          }
         });
 
         ws.send(responseMessage.serializeBinary());
