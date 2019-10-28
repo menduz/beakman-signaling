@@ -2,3 +2,4 @@ node_modules
 *.tgz
 *.sh
 **/*.js
+package-lock.json
