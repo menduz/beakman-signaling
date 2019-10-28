@@ -1,0 +1,25 @@
+{
+  "name": "arduz-signaling",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/tsc -p tsconfig.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^3.5.3"
+  },
+  "dependencies": {
+    "@types/express": "^4.17.0",
+    "@types/google-protobuf": "^3.7.1",
+    "@types/ws": "^6.0.1",
+    "beakman": "^1.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "google-protobuf": "^3.9.0",
+    "ws": "^7.1.0"
+  }
+}
